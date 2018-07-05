@@ -11,4 +11,6 @@
 }
 .col{
   flex: 1;
+  align-items: center;
+  flex-direction: row;
 }
