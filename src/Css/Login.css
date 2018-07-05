@@ -15,3 +15,11 @@
   align-items: center;
   flex-direction: row;
 }
+
+.btn{
+  background-color: #64b5f6;
+}
+
+.btn:focus{
+  background-color: #64b5f6;
+}
