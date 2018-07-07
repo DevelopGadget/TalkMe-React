@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../Css/Login.css';
 import '../Css/TextInput.css';
-Ñ
+import $ from 'jquery';
+import { Button, Icon, Row, Input, Container, Col, CollectionItem, Collection, Badge, Modal } from 'react-materialize';
 
 class Login extends Component {
 
@@ -15,7 +16,11 @@ class Login extends Component {
   }
 
   Login = async () => {
+    if (this.state.Email.length <= 0 || this.state.Password.length <= 0) {
 
+    } else {
+
+    }
   }
 
   render() {
@@ -39,13 +44,18 @@ class Login extends Component {
           </Row>
           <Row>
             <Row>
-              <Button waves='red' type='submit' large>Login<Icon right>send</Icon></Button>
+              <Button waves='red' type='submit' large id='Login' onClick={this.Login.bind(this)}>Login<Icon right>send</Icon></Button>
             </Row>
             <Row>
               <Button waves='purple' flat={true} style={{ backgroundColor: 'transparent' }}>¿NO TIENES CUENTA?</Button>
             </Row>
           </Row>
         </Col>
+        <Modal
+          id='foo'
+          header='Modal Header'>
+          Lorem ipsum dolor sit amet
+        </Modal>
       </Container >
     );
   }
