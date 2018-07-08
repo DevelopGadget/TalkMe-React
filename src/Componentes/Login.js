@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import '../Css/Login.css';
+import * as $ from 'jquery';
 import '../Css/TextInput.css';
-import $ from 'jquery';
-import { Button, Icon, Row, Input, Container, Col, CollectionItem, Collection, Badge, Modal } from 'react-materialize';
-
+import { Button, Icon, Row, Input, Container, Col, Modal } from 'react-materialize';
+new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery'
+})
 class Login extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { Email: '', Password: '' }
+    this.state = { Email: '', Password: '', ModalTexto: '', ModalView: false, Num: 0 }
   }
 
   componentDidMount() {
@@ -17,10 +20,14 @@ class Login extends Component {
 
   Login = async () => {
     if (this.state.Email.length <= 0 || this.state.Password.length <= 0) {
-
+      this.setState({ ModalTexto: 'Se requieren los campos', ModalView: true, Num: this.state.Num + 1 });
     } else {
 
     }
+  }
+
+  componentDidUpdate() {
+    $('Modal').modal('destroy');
   }
 
   render() {
@@ -47,14 +54,15 @@ class Login extends Component {
               <Button waves='red' type='submit' large id='Login' onClick={this.Login.bind(this)}>Login<Icon right>send</Icon></Button>
             </Row>
             <Row>
-              <Button waves='purple' flat={true} style={{ backgroundColor: 'transparent' }}>¿NO TIENES CUENTA?</Button>
+              <Button waves='purple' flat={true} style={{ backgroundColor: 'transparent' }} id='Button' onClick={() => console.log('Press')}>¿NO TIENES CUENTA?</Button>
             </Row>
           </Row>
         </Col>
-        <Modal
-          id='foo'
-          header='Modal Header'>
-          Lorem ipsum dolor sit amet
+        <Modal open={this.state.ModalView} id='Modal'>
+          <Row style={{ display: 'flex', alignItems: 'center', marginBottom: 0 }}>
+            <img src="https://image.flaticon.com/icons/svg/190/190406.svg" height='80' width='80' className="circle responsive-img" />
+            <h4 style={{ marginLeft: 20 }}>{this.state.ModalTexto}</h4>
+          </Row>
         </Modal>
       </Container >
     );
