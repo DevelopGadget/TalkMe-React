@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import '../Css/Login.css';
 import * as $ from 'jquery';
 import '../Css/TextInput.css';
-import { Button, Icon, Row, Input, Container, Col, Modal } from 'react-materialize';
-new webpack.ProvidePlugin({
-  $: 'jquery',
-  jQuery: 'jquery'
-})
+import { Button, Icon, Row, Input, Container, Col } from 'react-materialize';
+import swal from 'sweetalert';
+
 class Login extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { Email: '', Password: '', ModalTexto: '', ModalView: false, Num: 0 }
+    this.state = { Email: '', Password: ''}
   }
 
   componentDidMount() {
@@ -20,9 +18,9 @@ class Login extends Component {
 
   Login = async () => {
     if (this.state.Email.length <= 0 || this.state.Password.length <= 0) {
-      this.setState({ ModalTexto: 'Se requieren los campos', ModalView: true, Num: this.state.Num + 1 });
+      swal('Invalido', 'Todos los campos son requeridos', 'error');
     } else {
-
+      swal('Correcto', 'Todos los campos estan correcto', 'error');
     }
   }
 
@@ -58,12 +56,6 @@ class Login extends Component {
             </Row>
           </Row>
         </Col>
-        <Modal open={this.state.ModalView} id='Modal'>
-          <Row style={{ display: 'flex', alignItems: 'center', marginBottom: 0 }}>
-            <img src="https://image.flaticon.com/icons/svg/190/190406.svg" height='80' width='80' className="circle responsive-img" />
-            <h4 style={{ marginLeft: 20 }}>{this.state.ModalTexto}</h4>
-          </Row>
-        </Modal>
       </Container >
     );
   }
