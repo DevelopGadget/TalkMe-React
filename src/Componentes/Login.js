@@ -20,12 +20,8 @@ class Login extends Component {
     if (this.state.Email.length <= 0 || this.state.Password.length <= 0) {
       swal('Invalido', 'Todos los campos son requeridos', 'error');
     } else {
-      swal('Correcto', 'Todos los campos estan correcto', 'error');
+      swal('Correcto', 'Todos los campos estan correcto', 'success');
     }
-  }
-
-  componentDidUpdate() {
-    $('Modal').modal('destroy');
   }
 
   render() {
